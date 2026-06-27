@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ShelfRoute - Amazon Book Finder</title>
+    <meta
+      name="description"
+      content="Search a specific book and redirect to Amazon results sorted by lowest price."
+    />
+    <link rel="preload" href="assets/books-hero.png" as="image" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header" aria-label="Primary">
+        <a class="brand" href="./index.html" aria-label="ShelfRoute home">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>
+            <strong>ShelfRoute</strong>
+            <small>Book finder</small>
+          </span>
+        </a>
+
+        <nav class="quick-nav" aria-label="Amazon shortcuts">
+          <a href="#book-list">
+            Book list
+          </a>
+          <a href="https://www.amazon.com/gp/bestsellers/books/" target="_blank" rel="noopener noreferrer">
+            Best sellers
+          </a>
+          <a href="https://www.amazon.com/gp/new-releases/books/" target="_blank" rel="noopener noreferrer">
+            New releases
+          </a>
+          <a href="https://www.amazon.com/s?k=kindle+books&i=digital-text" target="_blank" rel="noopener noreferrer">
+            Kindle
+          </a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="finder-grid" aria-labelledby="finder-title">
+          <div class="finder-panel">
+            <p class="eyebrow">Amazon best-price search</p>
+            <h1 id="finder-title">Search a book, then go to Amazon sorted by lowest price.</h1>
+            <p class="intro">
+              Type a specific book name, author, or ISBN. The button redirects to Amazon book results with low-price sorting applied.
+            </p>
+
+            <form class="search-card" id="bookSearchForm">
+              <label for="bookQuery">Book name, author, or ISBN</label>
+              <div class="search-row">
+                <input
+                  id="bookQuery"
+                  name="bookQuery"
+                  type="search"
+                  autocomplete="off"
+                  placeholder="Try: Atomic Habits by James Clear"
+                  required
+                />
+                <select id="bookFormat" name="bookFormat" aria-label="Book format">
+                  <option value="stripbooks">Printed books</option>
+                  <option value="digital-text">Kindle eBooks</option>
+                </select>
+                <button type="submit">Find Best Price</button>
+              </div>
+              <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+            </form>
+
+            <div class="prompt-row" aria-label="Popular searches">
+              <button type="button" data-search="atomic habits book">Atomic Habits</button>
+              <button type="button" data-search="the psychology of money book">Psychology of Money</button>
+              <button type="button" data-search="clean code robert c martin book">Clean Code</button>
+              <button type="button" data-search="dune frank herbert book">Dune</button>
+            </div>
+          </div>
+
+          <aside class="visual-panel" aria-label="Book collection">
+            <img src="assets/books-hero.png" alt="Illustration of neatly arranged books on a desk" />
+            <div class="visual-overlay">
+              <span>Redirect search</span>
+              <strong>Lowest-price sort</strong>
+            </div>
+          </aside>
+        </section>
+
+        <section class="link-strip" aria-label="Helpful Amazon pages">
+          <a class="strip-card" href="https://www.amazon.com/gp/bestsellers/books/" target="_blank" rel="noopener noreferrer">
+            <span class="strip-icon book" aria-hidden="true"></span>
+            <span>
+              <strong>Book Best Sellers</strong>
+              <small>Top ranked books on Amazon</small>
+            </span>
+          </a>
+          <a class="strip-card" href="https://www.amazon.com/gp/new-releases/books/" target="_blank" rel="noopener noreferrer">
+            <span class="strip-icon burst" aria-hidden="true"></span>
+            <span>
+              <strong>New Releases</strong>
+              <small>Recently launched books</small>
+            </span>
+          </a>
+          <a class="strip-card" href="https://www.amazon.com/s?k=textbooks&i=stripbooks" target="_blank" rel="noopener noreferrer">
+            <span class="strip-icon stack" aria-hidden="true"></span>
+            <span>
+              <strong>Textbooks</strong>
+              <small>Study and reference books</small>
+            </span>
+          </a>
+        </section>
+
+        <section class="featured-books" id="book-list" aria-labelledby="book-list-title">
+          <div class="section-heading">
+            <p class="eyebrow">Book shelf</p>
+            <h2 id="book-list-title">Quick book links sorted by low price</h2>
+          </div>
+
+          <div class="book-grid">
+            <a class="book-card" href="https://www.amazon.com/s?k=Atomic+Habits+James+Clear&i=stripbooks&s=price-asc-rank" target="_blank" rel="noopener noreferrer">
+              <span class="book-number">01</span>
+              <span class="book-chip">Habits</span>
+              <strong class="book-title">Atomic Habits</strong>
+              <small class="book-author">James Clear</small>
+              <p class="book-note">Tiny habit systems, behavior change, and daily improvement.</p>
+              <span class="book-link">Open on Amazon</span>
+            </a>
+            <a class="book-card" href="https://www.amazon.com/s?k=The+Psychology+of+Money+Morgan+Housel&i=stripbooks&s=price-asc-rank" target="_blank" rel="noopener noreferrer">
+              <span class="book-number">02</span>
+              <span class="book-chip">Finance</span>
+              <strong class="book-title">The Psychology of Money</strong>
+              <small class="book-author">Morgan Housel</small>
+              <p class="book-note">Money habits, investing behavior, and long-term thinking.</p>
+              <span class="book-link">Open on Amazon</span>
+            </a>
+            <a class="book-card" href="https://www.amazon.com/s?k=Rich+Dad+Poor+Dad+Robert+Kiyosaki&i=stripbooks&s=price-asc-rank" target="_blank" rel="noopener noreferrer">
+              <span class="book-number">03</span>
+              <span class="book-chip">Money</span>
+              <strong class="book-title">Rich Dad Poor Dad</strong>
+              <small class="book-author">Robert T. Kiyosaki</small>
+              <p class="book-note">Personal finance lessons about assets, income, and mindset.</p>
+              <span class="book-link">Open on Amazon</span>
+            </a>
+            <a class="book-card" href="https://www.amazon.com/s?k=Deep+Work+Cal+Newport&i=stripbooks&s=price-asc-rank" target="_blank" rel="noopener noreferrer">
+              <span class="book-number">04</span>
+              <span class="book-chip">Focus</span>
+              <strong class="book-title">Deep Work</strong>
+              <small class="book-author">Cal Newport</small>
+              <p class="book-note">Focused work, attention, and doing difficult things well.</p>
+              <span class="book-link">Open on Amazon</span>
+            </a>
+            <a class="book-card" href="https://www.amazon.com/s?k=The+Alchemist+Paulo+Coelho&i=stripbooks&s=price-asc-rank" target="_blank" rel="noopener noreferrer">
+              <span class="book-number">05</span>
+              <span class="book-chip">Fiction</span>
+              <strong class="book-title">The Alchemist</strong>
+              <small class="book-author">Paulo Coelho</small>
+              <p class="book-note">A short novel about dreams, courage, and discovery.</p>
+              <span class="book-link">Open on Amazon</span>
+            </a>
+            <a class="book-card" href="https://www.amazon.com/s?k=Ikigai+Hector+Garcia+Francesc+Miralles&i=stripbooks&s=price-asc-rank" target="_blank" rel="noopener noreferrer">
+              <span class="book-number">06</span>
+              <span class="book-chip">Life</span>
+              <strong class="book-title">Ikigai</strong>
+              <small class="book-author">Hector Garcia and Francesc Miralles</small>
+              <p class="book-note">Purpose, longevity, and calm everyday living.</p>
+              <span class="book-link">Open on Amazon</span>
+            </a>
+            <a class="book-card" href="https://www.amazon.com/s?k=The+7+Habits+of+Highly+Effective+People+Stephen+Covey&i=stripbooks&s=price-asc-rank" target="_blank" rel="noopener noreferrer">
+              <span class="book-number">07</span>
+              <span class="book-chip">Growth</span>
+              <strong class="book-title">The 7 Habits of Highly Effective People</strong>
+              <small class="book-author">Stephen R. Covey</small>
+              <p class="book-note">Principles for personal leadership and better decisions.</p>
+              <span class="book-link">Open on Amazon</span>
+            </a>
+            <a class="book-card" href="https://www.amazon.com/s?k=How+to+Win+Friends+and+Influence+People+Dale+Carnegie&i=stripbooks&s=price-asc-rank" target="_blank" rel="noopener noreferrer">
+              <span class="book-number">08</span>
+              <span class="book-chip">People</span>
+              <strong class="book-title">How to Win Friends and Influence People</strong>
+              <small class="book-author">Dale Carnegie</small>
+              <p class="book-note">Classic communication and relationship-building ideas.</p>
+              <span class="book-link">Open on Amazon</span>
+            </a>
+            <a class="book-card" href="https://www.amazon.com/s?k=Clean+Code+Robert+C+Martin&i=stripbooks&s=price-asc-rank" target="_blank" rel="noopener noreferrer">
+              <span class="book-number">09</span>
+              <span class="book-chip">Code</span>
+              <strong class="book-title">Clean Code</strong>
+              <small class="book-author">Robert C. Martin</small>
+              <p class="book-note">Readable software, better functions, and maintainable systems.</p>
+              <span class="book-link">Open on Amazon</span>
+            </a>
+            <a class="book-card" href="https://www.amazon.com/s?k=The+Pragmatic+Programmer+David+Thomas+Andrew+Hunt&i=stripbooks&s=price-asc-rank" target="_blank" rel="noopener noreferrer">
+              <span class="book-number">10</span>
+              <span class="book-chip">Code</span>
+              <strong class="book-title">The Pragmatic Programmer</strong>
+              <small class="book-author">David Thomas and Andrew Hunt</small>
+              <p class="book-note">Practical engineering habits and software craftsmanship.</p>
+              <span class="book-link">Open on Amazon</span>
+            </a>
+            <a class="book-card" href="https://www.amazon.com/s?k=Harry+Potter+and+the+Sorcerer%27s+Stone+J+K+Rowling&i=stripbooks&s=price-asc-rank" target="_blank" rel="noopener noreferrer">
+              <span class="book-number">11</span>
+              <span class="book-chip">Fantasy</span>
+              <strong class="book-title">Harry Potter and the Sorcerer's Stone</strong>
+              <small class="book-author">J.K. Rowling</small>
+              <p class="book-note">A modern fantasy story for younger and older readers.</p>
+              <span class="book-link">Open on Amazon</span>
+            </a>
+            <a class="book-card" href="https://www.amazon.com/s?k=Dune+Frank+Herbert&i=stripbooks&s=price-asc-rank" target="_blank" rel="noopener noreferrer">
+              <span class="book-number">12</span>
+              <span class="book-chip">Sci-fi</span>
+              <strong class="book-title">Dune</strong>
+              <small class="book-author">Frank Herbert</small>
+              <p class="book-note">Epic science fiction, politics, ecology, and power.</p>
+              <span class="book-link">Open on Amazon</span>
+            </a>
+          </div>
+        </section>
+
+        <section class="categories" aria-labelledby="category-title">
+          <div class="section-heading">
+            <p class="eyebrow">Browse by shelf</p>
+            <h2 id="category-title">Popular book categories</h2>
+          </div>
+
+          <div class="category-grid">
+            <a class="category-card" href="https://www.amazon.com/s?k=programming+books&i=stripbooks" target="_blank" rel="noopener noreferrer">
+              <span class="mini-cover teal" aria-hidden="true">01</span>
+              <strong>Programming</strong>
+              <small>Code, software, AI, data</small>
+            </a>
+            <a class="category-card" href="https://www.amazon.com/s?k=business+books&i=stripbooks" target="_blank" rel="noopener noreferrer">
+              <span class="mini-cover gold" aria-hidden="true">02</span>
+              <strong>Business</strong>
+              <small>Startups, leadership, strategy</small>
+            </a>
+            <a class="category-card" href="https://www.amazon.com/s?k=self+help+books&i=stripbooks" target="_blank" rel="noopener noreferrer">
+              <span class="mini-cover coral" aria-hidden="true">03</span>
+              <strong>Self help</strong>
+              <small>Habits, focus, mindset</small>
+            </a>
+            <a class="category-card" href="https://www.amazon.com/s?k=fantasy+books&i=stripbooks" target="_blank" rel="noopener noreferrer">
+              <span class="mini-cover ink" aria-hidden="true">04</span>
+              <strong>Fantasy</strong>
+              <small>Magic, quests, epic worlds</small>
+            </a>
+            <a class="category-card" href="https://www.amazon.com/s?k=romance+books&i=stripbooks" target="_blank" rel="noopener noreferrer">
+              <span class="mini-cover rose" aria-hidden="true">05</span>
+              <strong>Romance</strong>
+              <small>Contemporary and classic love stories</small>
+            </a>
+            <a class="category-card" href="https://www.amazon.com/s?k=mystery+thriller+books&i=stripbooks" target="_blank" rel="noopener noreferrer">
+              <span class="mini-cover violet" aria-hidden="true">06</span>
+              <strong>Mystery</strong>
+              <small>Crime, thrillers, suspense</small>
+            </a>
+            <a class="category-card" href="https://www.amazon.com/s?k=children%27s+books&i=stripbooks" target="_blank" rel="noopener noreferrer">
+              <span class="mini-cover green" aria-hidden="true">07</span>
+              <strong>Kids</strong>
+              <small>Picture books and chapter books</small>
+            </a>
+            <a class="category-card" href="https://www.amazon.com/s?k=biography+books&i=stripbooks" target="_blank" rel="noopener noreferrer">
+              <span class="mini-cover blue" aria-hidden="true">08</span>
+              <strong>Biography</strong>
+              <small>Memoirs and real lives</small>
+            </a>
+            <a class="category-card" href="https://www.amazon.com/s?k=cookbooks&i=stripbooks" target="_blank" rel="noopener noreferrer">
+              <span class="mini-cover tomato" aria-hidden="true">09</span>
+              <strong>Cookbooks</strong>
+              <small>Recipes, baking, nutrition</small>
+            </a>
+            <a class="category-card" href="https://www.amazon.com/s?k=manga&i=stripbooks" target="_blank" rel="noopener noreferrer">
+              <span class="mini-cover plum" aria-hidden="true">10</span>
+              <strong>Manga</strong>
+              <small>Series, box sets, graphic novels</small>
+            </a>
+            <a class="category-card" href="https://www.amazon.com/s?k=science+books&i=stripbooks" target="_blank" rel="noopener noreferrer">
+              <span class="mini-cover cyan" aria-hidden="true">11</span>
+              <strong>Science</strong>
+              <small>Space, biology, physics</small>
+            </a>
+            <a class="category-card" href="https://www.amazon.com/s?k=history+books&i=stripbooks" target="_blank" rel="noopener noreferrer">
+              <span class="mini-cover rust" aria-hidden="true">12</span>
+              <strong>History</strong>
+              <small>Ancient, modern, world history</small>
+            </a>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <span>Independent shortcut page. Final prices, shipping, and editions are controlled by Amazon.</span>
+        <a href="https://www.amazon.com/books-used-books-textbooks/b?node=283155" target="_blank" rel="noopener noreferrer">
+          Amazon Books
+        </a>
+      </footer>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
